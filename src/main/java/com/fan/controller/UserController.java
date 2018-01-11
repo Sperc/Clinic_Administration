@@ -26,14 +26,8 @@ public class UserController {
         }
         return "login";
     }
-    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "home";
-    }
-
-    @RequestMapping(value = "/hello",method = RequestMethod.GET)
-    public String hello(@RequestParam(value="name", required=false, defaultValue="World") String name,Model model){
-        model.addAttribute("name",name);
-        return "hello";
+    @RequestMapping(value = "/")
+    public String index(){
+        return "index";
     }
 }

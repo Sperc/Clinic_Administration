@@ -11,4 +11,7 @@ public interface PatientService {
     Patient addPatient(Patient p);
     Patient findByPesel(String pesel);
     List<Patient> findByName(String fristName,String lastName);
+    Patient save(Patient patient);
+    List<Patient> findAll();
+    void delete(Long id);
 }

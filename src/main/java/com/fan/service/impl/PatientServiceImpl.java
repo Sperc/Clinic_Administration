@@ -28,7 +28,22 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public List<Patient> findByName(String fristName, String lastName) {
-        return patientRepository.findByFirstNameAndLastName(fristName,lastName);
+        return patientRepository.findByFirstNameAndLastName(fristName, lastName);
+    }
+
+    @Override
+    public Patient save(Patient patient) {
+        return patientRepository.save(patient);
+    }
+
+    @Override
+    public List<Patient> findAll() {
+        return patientRepository.findAll();
+    }
+
+    @Override
+    public void delete(Long id) {
+        patientRepository.delete(id);
     }
 
 }

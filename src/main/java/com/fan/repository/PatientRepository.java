@@ -16,6 +16,16 @@ public interface PatientRepository extends JpaRepository<Patient,Long>{
     Patient getOne(Long aLong);
 
     List<Patient> findByFirstNameAndLastName(String firstName,String lastName);
+
     Patient findByPesel(String pesel);
+
+    @Override
+    void delete(Patient patient);
+
+    @Override
+    void delete(Long aLong);
+
+    @Override
+    <S extends Patient> S save(S s);
 
 }
