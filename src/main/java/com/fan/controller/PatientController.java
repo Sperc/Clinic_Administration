@@ -18,10 +18,15 @@ public class PatientController {
     private PatientService patientService;
 
 
-    @GetMapping("/patients")
+    @GetMapping("patient")
+    public String patients(){
+        return "patient";
+    }
+    @GetMapping("/get-patients")
     public String patients(Model model){
         List<Patient> patients = patientService.findAll();
         model.addAttribute("allPatients",patients);
         return "patient";
     }
+
 }
