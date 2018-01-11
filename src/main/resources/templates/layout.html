@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head th:fragment="site-head">
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}"/>
-    <!--<link rel=“icon” href=“../public/img/favicon.ico” th:href=“@{/img/favicon.ico}”/>-->
-    <!--<script src=“../public/js/jquery-3.1.0.min.js” th:src=“@{/js/jquery-3.1.0.min.js}”></script>-->
-    <!--<script src=“../public/js/blog-scripts.js” th:src=“@{/js/blog-scripts.js}”></script>-->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+
     <meta th:include="this :: head" th:remove="tag"/>
 </head>
 <body>
 <header th:fragment="site-header">
-    <a href="index.html" th:href="@{/}"><img src="../public/img/site-logo.png" th:src="@{/img/site-logo.png}"/></a>
-    <a href="index.html" th:href="@{/}">Home</a>
-    <a href="users/register.html" th:href="@{/users/register}">Register</a>
-    <a href="posts/index.html" th:href="@{/posts}">Posts</a>
-    <a href="posts/create.html" th:href="@{/posts/create}">Create Post</a>
-    <a href="users/index.html" th:href="@{/users}">Users</a>
-    <div id="logged-in-info"><span>Hello, <b>(user)</b></span>
-        <form method="post" th:action="@{/users/logout}">
+    <a href="index.html" th:href="@{/}"><img src="../static/img/site-logo.png" th:src="@{/img/site-logo.png}"/></a>
+    <a href="index.html" th:href="@{/}">Strona Głowna</a>
+    <a href="employee.html" th:href="@{/employee}">Pracownicy</a>
+    <a href="patient.html" th:href="@{/patient}">Rejestracja Pacjenta</a>
+    <a href="stocktaking.html" th:href="@{/stocktaking}">Inwentaryzacja</a>
+    <div id="logged-in-info"><span>Hello, <b>user</b></span>
+        <form method="post" th:action="@{/logout}">
             <input type="submit" value="Logout"/>
         </form>
     </div>
