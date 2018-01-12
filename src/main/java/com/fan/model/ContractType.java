@@ -16,11 +16,20 @@ public class ContractType {
     private Long id;
     private String name;
     private Long workTime;
+    private Double salary;
     @OneToMany(mappedBy = "contractType")
     private List<Employee> employeeList;
 
     public Long getId() {
         return id;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 
     public void setId(Long id) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Security Example </title>
 
@@ -11,9 +11,8 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="../static/css/styles.css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
 
 </head>
 <body>
@@ -75,7 +74,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Nazwisko</th>
-                            <th>Imiê</th>
+                            <th>Imiï¿½</th>
                             <th>Stanowisko</th>
                             <th>Pensja</th>
                             <th>Umowa</th>
@@ -83,65 +82,66 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <th>Frankowski</th>
-                            <th>Franek</th>
-                            <th>Onkolog</th>
-                            <th>7000</th>
-                            <th>brak</th>
+                        <tr th:each="e : ${allEmployees}">
+                            <th th:text="${e.id}"/>
+                            <th th:text="${e.firstName}"/>
+                            <th th:text="${e.lastName}"/>
+                            <th th:text="${e.position}"/>
+                            <th th:text="${e.contractType.salary}"/>
+                            <th th:text="${e.contractType.name}"/>
                             <th class="center-panel">
                                 <div class="btn-group">
                                     <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegó³y umowy</a>
-                                    <a href="#" class="btn btn-default">Usuñ</a>
+                                    <a href="#" class="btn btn-default">Sczegï¿½y umowy</a>
+                                    <a href="#" class="btn btn-default">Usuï¿½</a>
                                 </div>
+                            </th>
                         </tr>
 
-                        <tr>
-                            <th>2</th>
-                            <th>ss</th>
-                            <th>Fradsdsdnek</th>
-                            <th>Ondsdkolog</th>
-                            <th>7500</th>
-                            <th>brak</th>
-                            <th class="center-panel">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegó³y umowy</a>
-                                    <a href="#" class="btn btn-default">Usuñ</a>
-                                </div>
-                        </tr>
+                        <!--<tr>-->
+                            <!--<th>2</th>-->
+                            <!--<th>ss</th>-->
+                            <!--<th>Fradsdsdnek</th>-->
+                            <!--<th>Ondsdkolog</th>-->
+                            <!--<th>7500</th>-->
+                            <!--<th>brak</th>-->
+                            <!--<th class="center-panel">-->
+                                <!--<div class="btn-group">-->
+                                    <!--<a href="#" class="btn btn-default">Edytuj</a>-->
+                                    <!--<a href="#" class="btn btn-default">Sczegï¿½y umowy</a>-->
+                                    <!--<a href="#" class="btn btn-default">Usuï¿½</a>-->
+                                <!--</div>-->
+                        <!--</tr>-->
 
-                        <tr>
-                            <th>3</th>
-                            <th>sdsadsafafasfass</th>
-                            <th>Fradsdsdnek</th>
-                            <th>Ondsdkolog</th>
-                            <th>7500</th>
-                            <th>ssssssssssssss</th>
-                            <th  class="center-panel">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegó³y umowy</a>
-                                    <a href="#" class="btn btn-default">Usuñ</a>
-                                </div>
-                        </tr>
+                        <!--<tr>-->
+                            <!--<th>3</th>-->
+                            <!--<th>sdsadsafafasfass</th>-->
+                            <!--<th>Fradsdsdnek</th>-->
+                            <!--<th>Ondsdkolog</th>-->
+                            <!--<th>7500</th>-->
+                            <!--<th>ssssssssssssss</th>-->
+                            <!--<th  class="center-panel">-->
+                                <!--<div class="btn-group">-->
+                                    <!--<a href="#" class="btn btn-default">Edytuj</a>-->
+                                    <!--<a href="#" class="btn btn-default">Sczegï¿½y umowy</a>-->
+                                    <!--<a href="#" class="btn btn-default">Usuï¿½</a>-->
+                                <!--</div>-->
+                        <!--</tr>-->
 
-                        <tr>
-                            <th>4</th>
-                            <th>sdsadsfasfass</th>
-                            <th>Frasdnek</th>
-                            <th>Ondsdkolog</th>
-                            <th>7500</th>
-                            <th>ssssssssssssss</th>
-                            <th  class="center-panel">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegó³y umowy</a>
-                                    <a href="#" class="btn btn-default">Usuñ</a>
-                                </div>
-                        </tr>
+                        <!--<tr>-->
+                            <!--<th>4</th>-->
+                            <!--<th>sdsadsfasfass</th>-->
+                            <!--<th>Frasdnek</th>-->
+                            <!--<th>Ondsdkolog</th>-->
+                            <!--<th>7500</th>-->
+                            <!--<th>ssssssssssssss</th>-->
+                            <!--<th  class="center-panel">-->
+                                <!--<div class="btn-group">-->
+                                    <!--<a href="#" class="btn btn-default">Edytuj</a>-->
+                                    <!--<a href="#" class="btn btn-default">Sczegï¿½y umowy</a>-->
+                                    <!--<a href="#" class="btn btn-default">Usuï¿½</a>-->
+                                <!--</div>-->
+                        <!--</tr>-->
                     </tbody>
                 </table>
             </div>

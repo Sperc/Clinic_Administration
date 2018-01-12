@@ -13,7 +13,6 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String position;
-    private String salary;
 
     @ManyToOne
     private WarehouseEmployees warehouseEmployees;
@@ -52,14 +51,6 @@ public class Employee {
 
     public void setPosition(String position) {
         this.position = position;
-    }
-
-    public String getSalary() {
-        return salary;
-    }
-
-    public void setSalary(String salary) {
-        this.salary = salary;
     }
 
     public WarehouseEmployees getWarehouseEmployees() {

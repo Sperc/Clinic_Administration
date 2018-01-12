@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Security Example </title>
 
@@ -11,8 +11,8 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="../static/css/styles.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
 
 
 </head>
@@ -47,7 +47,7 @@
         <div class="centered full-width-with-margins">
             <div class="row margin-bottom-md">
                 <div class="col-xs-4 col-sm-4 col-md-4 stick-child-to-left">
-                    <a href="registerform.html" class="btn btn-default">Dodaj pacjenta</a>
+                    <a href="registerform.html" th:href="@{/register}" class="btn btn-default">Dodaj pacjenta</a>
                 </div>
 
                 <div class="col-xs-4 col-sm-4 col-md-4">
@@ -75,68 +75,72 @@
                         <tr>
                             <th>Id</th>
                             <th>Nazwisko</th>
-                            <th>Imiê</th>
+                            <th>Imiï¿½</th>
                             <th>PESEL</th>
                             <th>Data?</th>
                             <th class="center-panel">Opcje</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <th>Frankowski</th>
-                            <th>Franek</th>
-                            <th>7000</th>
+                        <tr th:each="p : ${allPatient}">
+                            <th th:text="${p.id}"/>
+                            <th th:text="${p.firstName}"/>
+                            <th th:text="${p.lastName}"/>
+                            <th th:text="${p.pesel}"/>
                             <th>brak</th>
                             <th class="center-panel">
                                 <div class="btn-group">
                                     <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegó³y</a>
-                                    <a href="#" class="btn btn-default">Usuñ</a>
+                                    <a href="#" class="btn btn-default">Sczegï¿½y</a>
+                                    <a href="#" class="btn btn-default">Usuï¿½</a>
                                 </div>
+                            </th>
                         </tr>
 
-                        <tr>
-                            <th>1</th>
-                            <th>Frankowski</th>
-                            <th>Franek</th>
-                            <th>7000</th>
-                            <th>brak</th>
-                            <th class="center-panel">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegó³y</a>
-                                    <a href="#" class="btn btn-default">Usuñ</a>
-                                </div>
-                        </tr>
+                        <!--<tr>-->
+                            <!--<th>1</th>-->
+                            <!--<th>Frankowski</th>-->
+                            <!--<th>Franek</th>-->
+                            <!--<th>7000</th>-->
+                            <!--<th>brak</th>-->
+                            <!--<th class="center-panel">-->
+                                <!--<div class="btn-group">-->
+                                    <!--<a href="#" class="btn btn-default">Edytuj</a>-->
+                                    <!--<a href="#" class="btn btn-default">Sczegï¿½y</a>-->
+                                    <!--<a href="#" class="btn btn-default">Usuï¿½</a>-->
+                                <!--</div>-->
+                            <!--</th>-->
+                        <!--</tr>-->
 
-                        <tr>
-                            <th>1</th>
-                            <th>Frankowski</th>
-                            <th>Franek</th>
-                            <th>7000</th>
-                            <th>brak</th>
-                            <th class="center-panel">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegó³y</a>
-                                    <a href="#" class="btn btn-default">Usuñ</a>
-                                </div>
-                        </tr>
+                        <!--<tr>-->
+                            <!--<th>1</th>-->
+                            <!--<th>Frankowski</th>-->
+                            <!--<th>Franek</th>-->
+                            <!--<th>7000</th>-->
+                            <!--<th>brak</th>-->
+                            <!--<th class="center-panel">-->
+                                <!--<div class="btn-group">-->
+                                    <!--<a href="#" class="btn btn-default">Edytuj</a>-->
+                                    <!--<a href="#" class="btn btn-default">Sczegï¿½y</a>-->
+                                    <!--<a href="#" class="btn btn-default">Usuï¿½</a>-->
+                                <!--</div>-->
+                            <!--</th>-->
+                        <!--</tr>-->
 
-                        <tr>
-                            <th>1</th>
-                            <th>Frankowski</th>
-                            <th>Franek</th>
-                            <th>7000</th>
-                            <th>brak</th>
-                            <th class="center-panel">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegó³y</a>
-                                    <a href="#" class="btn btn-default">Usuñ</a>
-                                </div>
-                        </tr>
+                        <!--<tr>-->
+                            <!--<th>1</th>-->
+                            <!--<th>Frankowski</th>-->
+                            <!--<th>Franek</th>-->
+                            <!--<th>7000</th>-->
+                            <!--<th>brak</th>-->
+                            <!--<th class="center-panel">-->
+                                <!--<div class="btn-group">-->
+                                    <!--<a href="#" class="btn btn-default">Edytuj</a>-->
+                                    <!--<a href="#" class="btn btn-default">Sczegï¿½y</a>-->
+                                    <!--<a href="#" class="btn btn-default">Usuï¿½</a>-->
+                                <!--</div>-->
+                            <!--</th>-->
+                        <!--</tr>-->
                     </tbody>
                 </table>
             </div>
