@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spring Security Example </title>
+
+    <!-- font awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="../static/css/styles.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-font">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">BRAND</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="employees.html">PRACOWNICY</a></li>
+                    <li><a href="patients.html">PACJENCI</a></li>
+                    <li class="active"><a href="registerform.html">REJESTRACJA PACJENTA</a></li>
+                    <li><a href="inwentaryzacje.html">INWENTARYZACJA</a></li>
+                    <li><a href="#">WYLOGUJ</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="block" style="height: 100%;">
+        <div class="centered w-7">
+            <form>
+                <div class="row border-between ">
+                    <div class="col-md-6 stick-child-to-left">
+                        <h3>
+                            Nowy Pracownik
+                        </h3>
+                        <div class="form-group margin-right">
+                            <label for="nameInput">Imię</label>
+                            <input type="text" class="form-control" id="nameInput" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="surnameInput">Nazwisko</label>
+                            <input type="text" class="form-control" id="surnameInput" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="datebirthInput">Stanowisko</label>
+                            <input type="text" class="form-control" id="datebirthInput" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 stick-child-to-left">
+                        <h3>
+                            Nowa Umowa
+                        </h3>
+                        <div class="form-group">
+                            <label for="contractInput">Rodzaj umowy</label>
+                            <input type="text" class="form-control" id="contractInput" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="salaryInput">Pensja</label>
+                            <input type="text" class="form-control" id="salaryInput" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="contractDate">Data zatrudnienia</label>
+                            <input type="text" class="form-control" id="contractDate" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="contractEndDate">Koniec umowy</label>
+                            <input type="text" class="form-control" id="contractEndDate" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                    <a href="employees.html" class="btn btn-primary btn-margin-top" id="goback">Wróć</a>
+                    <button type="submit" class="btn btn-primary btn-margin-top">Dodaj</button>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+<script src="../static/script/newemp.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,4 +1,5 @@
 $(function () {
+
     $("a.deleteAnch").confirm({
         theme: 'supervan',
         title: 'Czy na pewno',
@@ -13,4 +14,6 @@ $(function () {
             }
         }
     });
+
 });
+
