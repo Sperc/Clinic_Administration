@@ -1,20 +1,6 @@
 $(function () {
 
 
-    /*var ViewModel = function() {
-     var self = this;
-      self.items = ko.observableArray([{comment:'first comment', amount:0}]);
-      self.addNewItem = function(){
-        self.items.push(new Item('',0));
-      };
- }
-  
- var Item = function(comment, amount) {
-  var self = this;
-  self.comment = ko.observable(comment);
-  self.amount = ko.observable(amount);   
-  }; */
-
 
     var Item = function (code, name, unit, quantity, unitprice, value, comments) {
         var self = this;
@@ -52,9 +38,9 @@ $(function () {
 
     }
 
-    var ms = new ViewModel();
+    //var ms = new ViewModel();
 
-    ko.applyBindings(ms);
+    //ko.applyBindings(ms);
  /*
 vm = new ViewModel();
  ko.applyBindings(vm);*/
