@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,4 +32,12 @@ public class EmployeeController {
     public String employees(){
         return "employees";
     }
+
+    @GetMapping("/employee-delete")
+    public String deleteEmployee(@RequestParam(name = "id")String id){
+        Long id_employee = new Long(id);
+        employeeService.delete(id_employee);
+        return "redirect:/employees";
+    }
+
 }
