@@ -1,6 +1,8 @@
 package com.fan.controller;
 
+import com.fan.model.Employee;
 import com.fan.model.Patient;
+import com.fan.service.EmployeeService;
 import com.fan.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by Pawel on 11.01.2018.
@@ -19,9 +22,17 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     @ModelAttribute("allPatient")
     private List<Patient> allPatients(){
         return patientService.findAll();
+    }
+
+    @ModelAttribute("allDoctors")
+    private List<Employee> allDoctors(){
+        return employeeService.findAll().stream().filter(p->p.getPosition().equalsIgnoreCase("lekarz")).collect(Collectors.toList());
     }
 
     @GetMapping("patient")
