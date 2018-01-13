@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Security Example </title>
-
+    <meta charset="UTF-8"/>
     <!-- font awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
 
@@ -75,24 +75,25 @@
                         <tr>
                             <th>Id</th>
                             <th>Nazwisko</th>
-                            <th>Imi�</th>
+                            <th>Imię</th>
+                            <th>Data urodzenia</th>
                             <th>PESEL</th>
-                            <th>Data?</th>
                             <th class="center-panel">Opcje</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="p : ${allPatient}">
                             <th th:text="${p.id}"/>
-                            <th th:text="${p.firstName}"/>
                             <th th:text="${p.lastName}"/>
+                            <th th:text="${p.firstName}"/>
+                            <th th:text="${p.birthDay}"/>
                             <th th:text="${p.pesel}"/>
                             <th>brak</th>
                             <th class="center-panel">
                                 <div class="btn-group">
                                     <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczeg�y</a>
-                                    <a href="#" class="btn btn-default">Usu�</a>
+                                    <a href="#" class="btn btn-default">Sczegóły</a>
+                                    <a href="#" th:href="@{/delete(id=${p.id})}" class="btn btn-default">Usuń</a>
                                 </div>
                             </th>
                         </tr>

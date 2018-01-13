@@ -7,9 +7,7 @@ import com.fan.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,9 +33,17 @@ public class PatientController {
         return employeeService.findAll().stream().filter(p->p.getPosition().equalsIgnoreCase("lekarz")).collect(Collectors.toList());
     }
 
-    @GetMapping("patient")
+    @GetMapping("/patient")
     public String patient() {
         return "patient";
+    }
+
+    @GetMapping("/delete")
+    public String deletePatient(@RequestParam(name = "id") String id){
+        String w = id;
+        Long id_patient = new Long(id);
+        patientService.delete(id_patient);
+        return "redirect:/patients";
     }
 
     @GetMapping("/patients")
@@ -53,7 +59,7 @@ public class PatientController {
     @PostMapping("/patientRegister")
     public String registerPatient(@ModelAttribute Patient patient,Model model){
         patientService.save(patient);
-        return "registerform";
+        return "redirect:/patients";
     }
 
 }
