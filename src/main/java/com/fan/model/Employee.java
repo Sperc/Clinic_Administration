@@ -1,6 +1,7 @@
 package com.fan.model;
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 
 /**
  * Created by Pawel on 16.11.2017.
@@ -17,7 +18,7 @@ public class Employee {
     @ManyToOne
     private WarehouseEmployees warehouseEmployees;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private ContractType contractType;
 
 

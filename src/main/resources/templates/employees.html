@@ -47,7 +47,7 @@
         <div class="centered full-width-with-margins">
             <div class="row margin-bottom-md">
                 <div class="col-xs-4 col-sm-4 col-md-4 stick-child-to-left">
-                    <a href="newemployee.html" class="btn btn-default">Dodaj pracownika</a>
+                    <a href="newemployee.html" th:action="@{/newemployee}" class="btn btn-default">Dodaj pracownika</a>
                 </div>
 
                 <div class="col-xs-4 col-sm-4 col-md-4">
@@ -91,7 +91,7 @@
                             <th th:text="${e.position}"/>
                             <th th:text="${e.contractType.salary}"/>
                             <th th:text="${e.contractType.name}"/>
-                            <th th:text="${e.contractType.workTime}"/>
+                            <th th:text="${e.contractType.startDate}"/>
                             <th class="center-panel">
                                 <div class="btn-group">
                                     <a href="#" class="btn btn-default">Edytuj</a>

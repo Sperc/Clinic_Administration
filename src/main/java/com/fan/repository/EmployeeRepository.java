@@ -21,4 +21,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long>{
 
     @Override
     void delete(Long aLong);
+
+    @Override
+    <S extends Employee> S save(S s);
 }
