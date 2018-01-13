@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spring Security Example </title>
 
     <!-- font awesome -->
@@ -14,8 +11,9 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css"/>
+    <link href="../static/css/toastr.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
     <link href="../static/css/styles.css" rel="stylesheet" />
 
 
@@ -37,10 +35,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="employees.html">PRACOWNICY</a></li>
+                    <li class="active"><a href="employees.html">PRACOWNICY</a></li>
                     <li><a href="patients.html">PACJENCI</a></li>
                     <li><a href="registerform.html">REJESTRACJA PACJENTA</a></li>
-                    <li class="active"><a href="inwentaryzacje.html">INWENTARYZACJA</a></li>
+                    <li><a href="inwenteryzacja.html">INWENTARYZACJA</a></li>
                     <li><a href="#">WYLOGUJ</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -50,57 +48,63 @@
     <div class="block" style="height: 100%;">
         <div class="centered full-width-with-margins position-top">
             <h3>
-                Inwentaryzacje
+                Umowa nr {tutaj id z modelu}
             </h3>
-            <div class="row margin-bottom-md">
-                <div class="col-xs-4 col-sm-4 col-md-4 stick-child-to-left">
-                    <a href="newinventarization.html" class="btn btn-default">Dodaj nową</a>
+            <div class="row border-between">
+                <div class="col-md-6">
+                    <h3>
+                        Dane pracownika
+                    </h3>
+                    <table class="table">
+                        <tbody class="stick-child-to-left">
+                            <tr>
+                                <td>Imię:</td>
+                                <td data-bind="text: _name">sdtest</td>
+                            </tr>
+                            <tr>
+                                <td>Nazwisko:</td>
+                                <td data-bind="text: _surname">test</td>
+                            </tr>
+                            <tr>
+                                <td>Stanowisko:</td>
+                                <td data-bind="text: _position">test</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="col-xs-4 col-sm-4 col-md-4">
-                    <form class="form-inline center-panel">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-                                <input class="form-control" type="text" placeholder="" />
-                            </div>
-                        </div>
-                        <div class="form-group"><input type="button" value="Szukaj" class="btn btn-default" /></div>
-                    </form>
+                <div class="col-md-6">
+                    <h3>
+                        Dane umowy
+                    </h3>
+                    <table class="table">
+                        <tbody class="stick-child-to-left">
+                            <tr>
+                                <td>Typ umowy:</td>
+                                <td data-bind="text: _name">sdtest</td>
+                            </tr>
+                            <tr>
+                                <td>Pensja:</td>
+                                <td data-bind="text: _surname" class="salary">500</td>
+                            </tr>
+                            <tr>
+                                <td>Data zawarcia:</td>
+                                <td data-bind="text: _surname">test</td>
+                            </tr>
+                            <tr>
+                                <td>Data zakończenia pracy:</td>
+                                <td data-bind="text: _position">test</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-
-                <div class="col-xs-4 col-sm-4 col-md-4">
-
-                </div>
-
-
 
             </div>
-            <div class="row">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Data</th>
-                            <th>Sporządzona przez</th>
-                            <th class="center-panel col-md-1">Szczegóły</th>
-                            <th class="center-panel col-md-1">Pobierz</th>
-                            <th class="center-panel col-md-1">Usuń</th>
-                        </tr>
-                    </thead>
-                    <tbody class="stick-child-to-left">
-                        <tr>
-                            <td>1</td>
-                            <td>Lublin</td>
-                            <td>1992-02-20</td>
-                            <td class="center-panel"><a href="inwentaryzacja.html" class="btn btn-default">Szczegóły</a></td>
-                            <td class="center-panel"><a href="#" class="btn btn-default">Pobierz</a></td>
-                            <td class="center-panel"><a href="#" class="btn btn-default deleteAnch">Usuń</a></td>
-
-                        </tr>    
-                    </tbody>
-                </table>
+            <div class="row btn-margin-top">
+                <a href="employees.html" class="btn btn-default btn-padding-20">Wróć</a>
+                <a href="#" class="btn btn-default btn-padding-20" id="newSalary">Zmień pensję</a>
+                <a href="#" class="btn btn-default btn-padding-20 " id="removeThisEmployee">Zwolnij pracownika</a>
             </div>
+
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -110,4 +114,6 @@
     <script type="text/javascript" src='../static/script/toastr.min.js'></script>
     <script src="../static/script/inwentaryzacje.js"></script>
 </body>
+
+
 </html>
