@@ -43,6 +43,9 @@ $(function () {
                     scrollTop: $("#addButton").offset().bottom
                 }, 100);
             });
+            //ko.utils.arrayPushAll(self.ReverseItems, self.Items);
+            //self.ReverseItems = self.Items.reverse();
+            //console.log(ko.toJSON(self.ReverseItems));
             toastr.info("dziala");
         }
 

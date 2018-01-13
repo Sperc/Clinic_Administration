@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -122,7 +122,7 @@
                             <td><button data-bind="click: $parent.addItem" class="btn btn-default" id="addButton">Add</button></td>
                         </tr>
                     </tbody>
-                    <tbody data-bind="foreach: Items">
+                    <tbody data-bind="foreach: Items.reverse()">
                         <tr>
                             <td data-bind="text: code"></td>
                             <td data-bind="text: name"></td>

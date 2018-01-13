@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>Spring Security Example </title>
 
     <!-- font awesome -->
@@ -12,7 +12,8 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
 
 </head>
@@ -44,7 +45,10 @@
     </nav>
 
     <div class="block" style="height: 100%;">
-        <div class="centered full-width-with-margins">
+        <div class="centered full-width-with-margins position-top">
+            <h3>
+                Baza pracowników
+            </h3>
             <div class="row margin-bottom-md">
                 <div class="col-xs-4 col-sm-4 col-md-4 stick-child-to-left">
                     <a href="newemployee.html" class="btn btn-default">Dodaj pracownika</a>
@@ -80,25 +84,29 @@
                             <th>Pensja</th>
                             <th>Umowa</th>
                             <th>Ilość Godzin</th>
-                            <th class="center-panel">Opcje</th>
+                            <th class="center-panel col-md-1">Edytuj</th>
+                            <th class="center-panel col-md-1">Szczegóły</th>
+                            <th class="center-panel col-md-1">Usuń</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="stick-child-to-left">
                         <tr th:each="e : ${allEmployees}">
-                            <th th:text="${e.id}"/>
-                            <th th:text="${e.firstName}"/>
-                            <th th:text="${e.lastName}"/>
-                            <th th:text="${e.position}"/>
-                            <th th:text="${e.contractType.salary}"/>
-                            <th th:text="${e.contractType.name}"/>
-                            <th th:text="${e.contractType.workTime}"/>
-                            <th class="center-panel">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczegóły umowy</a>
-                                    <a href="#" class="btn btn-default">Usuń</a>
-                                </div>
-                            </th>
+                            <td th:text="${e.id}" />
+                            <td th:text="${e.firstName}" />
+                            <td th:text="${e.lastName}" />
+                            <td th:text="${e.position}" />
+                            <td th:text="${e.contractType.salary}" />
+                            <td th:text="${e.contractType.name}" />
+                            <td th:text="${e.contractType.workTime}" />
+                            <td class="center-panel">
+                                <a href="#" class="btn btn-default">Edytuj</a>
+                            </td>
+                            <td class="center-panel">
+                                <a href="#" class="btn btn-default">Sczegóły umowy</a>
+                            </td>
+                            <td class="center-panel">
+                                <a href="#" class="btn btn-default removeEmployee">Usuń</a>
+                            </td>
                         </tr>
 
                         <!--<tr>-->
@@ -154,5 +162,6 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="../static/js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+<script src="../static/script/inwentaryzacje.js"></script>
 </html>
