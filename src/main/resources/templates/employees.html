@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8"/>
     <title>Spring Security Example </title>
 
     <!-- font awesome -->
@@ -74,10 +75,11 @@
                         <tr>
                             <th>Id</th>
                             <th>Nazwisko</th>
-                            <th>Imi�</th>
+                            <th>Imię</th>
                             <th>Stanowisko</th>
                             <th>Pensja</th>
                             <th>Umowa</th>
+                            <th>Ilość Godzin</th>
                             <th class="center-panel">Opcje</th>
                         </tr>
                     </thead>
@@ -89,11 +91,12 @@
                             <th th:text="${e.position}"/>
                             <th th:text="${e.contractType.salary}"/>
                             <th th:text="${e.contractType.name}"/>
+                            <th th:text="${e.contractType.workTime}"/>
                             <th class="center-panel">
                                 <div class="btn-group">
                                     <a href="#" class="btn btn-default">Edytuj</a>
-                                    <a href="#" class="btn btn-default">Sczeg�y umowy</a>
-                                    <a href="#" class="btn btn-default">Usu�</a>
+                                    <a href="#" class="btn btn-default">Sczegóły umowy</a>
+                                    <a href="#" class="btn btn-default">Usuń</a>
                                 </div>
                             </th>
                         </tr>
