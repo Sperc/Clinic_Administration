@@ -18,4 +18,10 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long>{
     Employee findById(Long id);
     List<Employee> findAllByPosition(String position);
     List<Employee> findAllByFirstNameAndLastName(String firstName,String lastName);
+
+    @Override
+    void delete(Long aLong);
+
+    @Override
+    <S extends Employee> S save(S s);
 }

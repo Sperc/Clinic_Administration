@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface EmployeeService {
     List<Employee> findAll();
+    void delete(Long id);
+    Employee save(Employee e);
 }
