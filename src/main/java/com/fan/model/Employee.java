@@ -1,6 +1,7 @@
 package com.fan.model;
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 
 /**
  * Created by Pawel on 16.11.2017.

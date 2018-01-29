@@ -40,9 +40,6 @@
 <!--<a href="patient.html" th:href="@{/patient}">Rejestracja Pacjenta</a>-->
 <!--<a href="stocktaking.html" th:href="@{/stocktaking}">Inwentaryzacja</a>-->
 <!--<div id="logged-in-info"><span>Hello, <b>user</b></span>-->
-<form method="post" th:action="@{/logout}">
-<input type="submit" value="Logout"/>
-</form>
 <!--</div>-->
 
 <!--</header>-->
@@ -63,14 +60,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="employees.html">PRACOWNICY</a></li>
+                <li><a href="employees.html" th:href="@{/patients}">PRACOWNICY</a></li>
                 <li><a href="patients.html" th:href="@{/patients}">PACJENCI</a></li>
                 <li class="active"><a href="registerform.html" th:href="@{/register}">REJESTRACJA PACJENTA</a></li>
-                <li><a href="inwentaryzacje.html">INWENTARYZACJA</a></li>
+                <li><a href="inwentaryzacje.html" th:href="@{/inwentaryzacje}">INWENTARYZACJA</a></li>
                 <li>
-                    <form th:action="@{/logout}" method="post">
-                            <input type="submit" value="WYLOGUJ"/>
-                    </form>
+                    <!--<form th:action="@{/logout}" method="post">-->
+                            <!--<input type="submit" value="WYLOGUJ"/>-->
+                    <!--</form>-->
+                    <a th:href="@{/logout}"></a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

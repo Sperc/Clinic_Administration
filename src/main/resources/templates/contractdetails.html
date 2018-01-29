@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Spring Security Example </title>
 
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css"/>
     <link href="../static/css/toastr.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
-    <link href="../static/css/styles.css" rel="stylesheet" />
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
 
 
 </head>
@@ -47,8 +47,8 @@
 
     <div class="block" style="height: 100%;">
         <div class="centered full-width-with-margins position-top">
-            <h3>
-                Umowa nr {tutaj id z modelu}
+            <h3 th:text="'Umowa nr ' + ${employee.contractType.id}">
+
             </h3>
             <div class="row border-between">
                 <div class="col-md-6">
@@ -59,15 +59,15 @@
                         <tbody class="stick-child-to-left">
                             <tr>
                                 <td>Imię:</td>
-                                <td data-bind="text: _name">sdtest</td>
+                                <td data-bind="text: _name" th:text="${employee.firstName}"/>
                             </tr>
                             <tr>
                                 <td>Nazwisko:</td>
-                                <td data-bind="text: _surname">test</td>
+                                <td data-bind="text: _surname" th:text="${employee.lastName}"/>
                             </tr>
                             <tr>
                                 <td>Stanowisko:</td>
-                                <td data-bind="text: _position">test</td>
+                                <td data-bind="text: _position" th:text="${employee.position}"/>
                             </tr>
                         </tbody>
                     </table>
@@ -80,19 +80,19 @@
                         <tbody class="stick-child-to-left">
                             <tr>
                                 <td>Typ umowy:</td>
-                                <td data-bind="text: _name">sdtest</td>
+                                <td data-bind="text: _name" th:text="${employee.contractType.name}"/>
                             </tr>
                             <tr>
                                 <td>Pensja:</td>
-                                <td data-bind="text: _surname" class="salary">500</td>
+                                <td data-bind="text: _surname" class="salary" th:text="${employee.contractType.salary}"/>
                             </tr>
                             <tr>
                                 <td>Data zawarcia:</td>
-                                <td data-bind="text: _surname">test</td>
+                                <td data-bind="text: _surname" th:text="${employee.contractType.startDate}"/>
                             </tr>
                             <tr>
                                 <td>Data zakończenia pracy:</td>
-                                <td data-bind="text: _position">test</td>
+                                <td data-bind="text: _position" th:text="${employee.contractType.endDate}"/>
                             </tr>
                         </tbody>
                     </table>
@@ -100,19 +100,19 @@
 
             </div>
             <div class="row btn-margin-top">
-                <a href="employees.html" class="btn btn-default btn-padding-20">Wróć</a>
+                <a href="employees.html" class="btn btn-default btn-padding-20" th:href="@{/employees}">Wróć</a>
                 <a href="#" class="btn btn-default btn-padding-20" id="newSalary">Zmień pensję</a>
-                <a href="#" class="btn btn-default btn-padding-20 " id="removeThisEmployee">Zwolnij pracownika</a>
+                <a href="#" class="btn btn-default btn-padding-20 " id="removeThisEmployee" th:href="@{/employee-delete(id=${employee.id})}">Zwolnij pracownika</a>
             </div>
 
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type='text/javascript' src='../static/script/knockout-3.4.2.js'></script>
+    <script type='text/javascript' src='../static/script/knockout-3.4.2.js' th:src="@{/script/knockout-3.4.2.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
-    <script type="text/javascript" src='../static/script/toastr.min.js'></script>
-    <script src="../static/script/inwentaryzacje.js"></script>
+    <script type="text/javascript" src='../static/script/toastr.min.js' th:src="@{/script/toastr.min.js}"></script>
+    <script src="../static/script/inwentaryzacje.js" th:src="@{/script/inwentaryzacje.js}"></script>
 </body>
 
 

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
@@ -14,9 +14,9 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="../static/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
 
 
 </head>
@@ -50,7 +50,7 @@
 
     <div class="block" style="height: 100%;">
         <div class="centered w-7">
-            <form>
+            <form th:action="@{/employee-add}" th:method="post">
                 <div class="row border-between ">
                     <div class="col-md-6 stick-child-to-left">
                         <h3>
@@ -58,15 +58,15 @@
                         </h3>
                         <div class="form-group margin-right">
                             <label for="nameInput">Imię</label>
-                            <input type="text" class="form-control" id="nameInput" placeholder="">
+                            <input type="text" class="form-control" id="nameInput" placeholder="" th:value="${employee?.firstName}" name="firstName"/>
                         </div>
                         <div class="form-group">
                             <label for="surnameInput">Nazwisko</label>
-                            <input type="text" class="form-control" id="surnameInput" placeholder="">
+                            <input type="text" class="form-control" id="surnameInput" placeholder="" th:value="${employee?.lastName}" name="lastName"/>
                         </div>
                         <div class="form-group">
                             <label for="datebirthInput">Stanowisko</label>
-                            <input type="text" class="form-control" id="datebirthInput" placeholder="">
+                            <input type="text" class="form-control" id="datebirthInput" placeholder="" name="position" th:value="${employee?.position}"/>
                         </div>
                     </div>
                     <div class="col-md-6 stick-child-to-left">
@@ -75,24 +75,24 @@
                         </h3>
                         <div class="form-group">
                             <label for="contractInput">Rodzaj umowy</label>
-                            <input type="text" class="form-control" id="contractInput" placeholder="">
+                            <input type="text" class="form-control" id="contractInput" placeholder="" th:name="contractType.name" th:value="${employee?.contractType?.name}"/>
                         </div>
                         <div class="form-group">
                             <label for="salaryInput">Pensja</label>
-                            <input type="text" class="form-control" id="salaryInput" placeholder="">
+                            <input type="number" class="form-control" id="salaryInput" placeholder="" th:name="contractType.salary" th:value="${employee?.contractType?.salary}"/>
                         </div>
                         <div class="form-group">
                             <label for="contractDate">Data zatrudnienia</label>
-                            <input type="text" class="form-control" id="contractDate" placeholder="">
+                            <input type="date" class="form-control" id="contractDate" placeholder="" th:name="contractType.startDate" th:value="${employee?.contractType?.startDate}" />
                         </div>
                         <div class="form-group">
                             <label for="contractEndDate">Koniec umowy</label>
-                            <input type="text" class="form-control" id="contractEndDate" placeholder="">
+                            <input type="date" class="form-control" id="contractEndDate" placeholder="" th:name="contractType.endDate" th:value="${employee?.contractType?.endDate}"/>
                         </div>
                     </div>
                 </div>
-                    <a href="employees.html" class="btn btn-primary btn-margin-top" id="goback">Wróć</a>
-                    <button type="submit" class="btn btn-primary btn-margin-top">Dodaj</button>
+                <a href="employees.html" class="btn btn-primary btn-margin-top" id="goback">Wróć</a>
+                <input type="submit" class="btn btn-primary btn-margin-top" value="Dodaj"></input>
 
             </form>
         </div>
@@ -102,5 +102,5 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
-<script src="../static/script/newemp.js" type="text/javascript" charset="utf-8"></script>
+<script src="../static/script/newemp.js" type="text/javascript" charset="utf-8" th:src="@{/script/newemp.js}"></script>
 </html>

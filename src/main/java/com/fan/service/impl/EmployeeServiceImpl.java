@@ -20,4 +20,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> findAll() {
         return employeeRepository.findAll();
     }
+
+    @Override
+    public void delete(Long id) {
+        employeeRepository.delete(id);
+    }
+
+    @Override
+    public Employee save(Employee e) {
+        return employeeRepository.save(e);
+    }
+
+    @Override
+    public Employee findOneById(Long id) {
+        return employeeRepository.findById(id);
+    }
 }

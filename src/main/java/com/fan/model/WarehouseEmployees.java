@@ -12,7 +12,7 @@ public class WarehouseEmployees {
     @Id
     private Long id;
     private int maxNumberOfEmployees;
-    @OneToMany(mappedBy = "warehouseEmployees")
+    @OneToMany(mappedBy = "warehouseEmployees",cascade = CascadeType.ALL)
     private List<Employee> employees;
 
     public Long getId() {

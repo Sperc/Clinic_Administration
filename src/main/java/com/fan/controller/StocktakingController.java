@@ -1,17 +1,63 @@
 package com.fan.controller;
 
+import com.fan.model.Stocktaking;
+import com.fan.service.StocktakingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Pawel on 11.01.2018.
  */
 @Controller
 public class StocktakingController {
-    @GetMapping("/stocktaking")
-    public String stocktaking(){
-        return "stocktaking";
+    @Autowired
+    StocktakingService stocktakingService;
+
+    @ModelAttribute("allStocktaking")
+    public List<Stocktaking> findAll() {
+        return stocktakingService.findAll();
     }
+
+    @GetMapping("/inwentaryzacja")
+    public String stocktakings() {
+        return "inwentaryzacje";
+    }
+
+    @GetMapping("/inwentaryzacja/usun")
+    public String deleteStocktaking(@RequestParam("id") Long id, Model model){
+        stocktakingService.delete(id);
+//        model.addAttribute("allStocktaking",stocktakingService.findAll());
+        return "redirect:/inwentaryzacja/";
+    }
+
+    @GetMapping("/inwentaryzacja/{id}")
+    public String stocktaking(@PathVariable("id") Long id, Model model) {
+        Stocktaking stocktaking = stocktakingService.findById(id);
+        model.addAttribute("stocktaking_id",stocktaking.getId());
+        model.addAttribute("itemList",stocktaking.getItemList());
+        return "inwentaryzacja";
+    }
+
+    @GetMapping("/inwentaryzacja/delete-item")
+    public String removeItemFromStocktaking(@RequestParam("stocktaking_id") Long stocktaking_id,
+                                            @RequestParam("item_id") Long item_id,Model model) {
+        Stocktaking stocktaking = stocktakingService.deleteItemFromStocktaking(stocktaking_id,item_id);
+        model.addAttribute("itemList",stocktaking.getItemList());
+        return "redirect:/inwentaryzacja/"+String.valueOf(stocktaking_id);
+    }
+    @GetMapping("/inwentaryzacja/nowa")
+    public String newStocktaking(){
+        return "newinventarization";
+    }
+    @PostMapping("/inventaryzacja/nowa/dodaj")
+    public String addInventaryzation(@ModelAttribute Stocktaking stocktaking){
+        stocktakingService.save(stocktaking);
+        return "redirect:/inwentaryzacja/";
+    }
+
 
 }

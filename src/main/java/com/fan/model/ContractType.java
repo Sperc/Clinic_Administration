@@ -1,9 +1,6 @@
 package com.fan.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -15,9 +12,10 @@ public class ContractType {
     @Id
     private Long id;
     private String name;
-    private Long workTime;
+    private String startDate;
+    private String endDate;
     private Double salary;
-    @OneToMany(mappedBy = "contractType")
+    @OneToMany(mappedBy = "contractType",cascade = CascadeType.ALL)
     private List<Employee> employeeList;
 
     public Long getId() {
@@ -44,19 +42,27 @@ public class ContractType {
         this.name = name;
     }
 
-    public Long getWorkTime() {
-        return workTime;
-    }
-
-    public void setWorkTime(Long workTime) {
-        this.workTime = workTime;
-    }
-
     public List<Employee> getEmployeeList() {
         return employeeList;
     }
 
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }
