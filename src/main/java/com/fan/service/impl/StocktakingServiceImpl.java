@@ -36,13 +36,6 @@ public class StocktakingServiceImpl implements StocktakingService {
     }
 
     @Override
-    public Stocktaking deleteItemFromStocktaking(Long stocktaking_id, Long item_id) {
-        Stocktaking stocktaking = stocktakingRepository.findById(stocktaking_id);
-        stocktaking.getItemList().remove(itemRepository.findOne(item_id));
-        return stocktakingRepository.save(stocktaking);
-    }
-
-    @Override
     public void delete(Long id) {
         stocktakingRepository.delete(id);
     }

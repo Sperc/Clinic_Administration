@@ -21,17 +21,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                //.antMatchers("/css/**","/script/**","/img/**","/patients").permitAll()
-                //.anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/index")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+            .authorizeRequests()
+            .antMatchers("/css/**","/script/**","/img/**","/patients").permitAll()
+            .anyRequest().authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .defaultSuccessUrl("/employees")
+            .permitAll()
+            .and()
+            .logout()
+            .logoutSuccessUrl("/login")
+            .permitAll();
     }
 
     @Autowired

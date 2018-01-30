@@ -38,11 +38,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="employees.html">PRACOWNICY</a></li>
-                <li><a href="patients.html">PACJENCI</a></li>
-                <li><a href="registerform.html">REJESTRACJA PACJENTA</a></li>
-                <li><a href="inwenteryzacja.html">INWENTARYZACJA</a></li>
-                <li><a href="#">WYLOGUJ</a></li>
+                <li class="active"><a href="employees.html" th:href="@{/employees}">PRACOWNICY</a></li>
+                <li ><a href="patients.html" th:href="@{/patients}">PACJENCI</a></li>
+                <li ><a href="registerform.html" th:href="@{/register}">REJESTRACJA PACJENTA</a></li>
+                <li><a href="inwentaryzacje.html" th:href="@{/inwentaryzacja}">INWENTARYZACJA</a></li>
+                <li>
+                    <form class="navbar-form" th:action="@{/logout}" method="post">
+                        <input type="submit" class="btn btn-danger" value="WYLOGUJ"/>
+                    </form>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -55,24 +59,10 @@
         </h3>
         <div class="row margin-bottom-md">
             <div class="col-xs-4 col-sm-4 col-md-4 stick-child-to-left">
-                <a href="newemployee.html" class="btn btn-default">Dodaj pracownika</a>
+                <a href="newemployee.html" class="btn btn-primary">Dodaj pracownika</a>
             </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <form class="form-inline center-panel">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-                            <input class="form-control" type="text" placeholder=""/>
-                        </div>
-                    </div>
-                    <div class="form-group"><input type="button" value="Szukaj" class="btn btn-default"/></div>
-                </form>
-            </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4">
-
-            </div>
 
 
         </div>
@@ -96,13 +86,13 @@
                     <td th:text="${e.lastName}"/>
                     <td th:text="${e.position}"/>
                     <td class="center-panel">
-                        <a href="contractdetails.html" th:href="@{/contractdetails(id=${e.id})}" class="btn btn-default">Szczegóły umowy</a>
+                        <a href="contractdetails.html" th:href="@{/contractdetails(id=${e.id})}" class="btn btn-primary">Szczegóły</a>
                     </td>
                     <td class="center-panel">
-                        <a href="newemployee.html" class="btn btn-default" th:href="@{/newemployee(id=${e.contractType.id})}">Edytuj</a>
+                        <a href="newemployee.html" class="btn btn-warning" th:href="@{/newemployee(id=${e.id})}">Edytuj</a>
                     </td>
                     <td class="center-panel">
-                        <a href="#" th:href="@{/employee-delete(id=${e.id})}" class="btn btn-default removeEmployee">Zwolnij</a>
+                        <a href="#" th:href="@{/employee-delete(id=${e.id})}" class="btn btn-danger removeEmployee">Zwolnij</a>
                     </td>
                 </tr>
                 </tbody>

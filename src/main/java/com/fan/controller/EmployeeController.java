@@ -1,5 +1,6 @@
 package com.fan.controller;
 
+import com.fan.model.ContractType;
 import com.fan.model.Employee;
 import com.fan.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,21 +50,41 @@ public class EmployeeController {
 
     @PostMapping("/employee-add")
     public String employeAdd(@ModelAttribute Employee employee, Model model) {
-        employeeService.save(employee);
+        Employee employee1 = employeeService.findOneById(employee.getId());
+        if(employee1 == null){
+            employeeService.save(employee);
+        }
+        else{
+            employee.setId(employee1.getId());
+            employeeService.save(employee);
+        }
         return "redirect:/employees";
     }
 
     @GetMapping("/newemployee")
-    public String editEmployee(@RequestParam(name = "id",required = false) Long id,Model model) {
+    public String editEmployee(@RequestParam(name = "id", required = false) Long id, Model model) {
         Employee employee = employeeService.findOneById(id);
-        model.addAttribute("employee",employee);
+        model.addAttribute("employee", employee);
         return "newemployee";
 
     }
+
     @GetMapping("/contractdetails")
-    public String contract(@RequestParam(name = "id") Long id,Model model) {
+    public String contract(@RequestParam(name = "id") Long id, Model model) {
         model.addAttribute("employee", employeeService.findOneById(id));
         return "contractdetails";
     }
+
+    @GetMapping("/employee-id/{id}/salary/{salary}")
+    public String editContractSalary(@RequestParam(name = "id") Long id,
+                                     @RequestParam(name="salary") Double salary,
+                                     Model model) {
+        Employee employee = employeeService.findOneById(id);
+        employee.getContractType().setSalary(salary);
+        employeeService.save(employee);
+        model.addAttribute("employee", employeeService.findOneById(employee.getId()));
+        return "contractdetails";
+    }
+
 
 }

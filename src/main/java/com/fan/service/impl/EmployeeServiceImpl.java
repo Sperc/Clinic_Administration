@@ -35,4 +35,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findOneById(Long id) {
         return employeeRepository.findById(id);
     }
+
+    @Override
+    public Employee findByContractId(Long id) {
+        return employeeRepository.findByContractTypeId(id);
+    }
+
+    @Override
+    public Employee findByFirstNameLastNamePostion(String firstName, String lastName, String position) {
+        return employeeRepository.findByFirstNameAndLastNameAndPosition(firstName,lastName,position);
+    }
 }

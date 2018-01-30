@@ -1,5 +1,7 @@
 package com.fan.model;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,13 +13,32 @@ public class Stocktaking {
     @GeneratedValue
     @Id
     private Long id;
+    private String code;
     private String date;
+    private String name;
 
-    @OneToOne
-    private Employee employee;
+    private String founder;
+    private String unit;
+    private Double unitPrice;
+    private int quantity;
+    private double value;
+    String description;
 
-    @OneToMany
-    private List<Item> itemList;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public Long getId() {
         return id;
@@ -35,19 +56,52 @@ public class Stocktaking {
         this.date = date;
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public String getName() {
+        return name;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public String getFounder() {
+        return founder;
     }
 
-    public List<Item> getItemList() {
-        return itemList;
+    public void setFounder(String founder) {
+        this.founder = founder;
     }
 
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public Double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+
     }
 }

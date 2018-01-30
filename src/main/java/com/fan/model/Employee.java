@@ -18,7 +18,7 @@ public class Employee {
     @ManyToOne
     private WarehouseEmployees warehouseEmployees;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private ContractType contractType;
 
 

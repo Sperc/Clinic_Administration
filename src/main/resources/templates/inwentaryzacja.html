@@ -38,11 +38,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="employees.html">PRACOWNICY</a></li>
-                <li><a href="patients.html">PACJENCI</a></li>
-                <li><a href="registerform.html">REJESTRACJA PACJENTA</a></li>
-                <li><a href="inwenteryzacja.html">INWENTARYZACJA</a></li>
-                <li><a href="#">WYLOGUJ</a></li>
+                <li><a href="employees.html" th:href="@{/employees}">PRACOWNICY</a></li>
+                <li ><a href="patients.html" th:href="@{/patients}">PACJENCI</a></li>
+                <li ><a href="registerform.html" th:href="@{/register}">REJESTRACJA PACJENTA</a></li>
+                <li class="active"><a href="inwentaryzacje.html" th:href="@{/inwentaryzacja}">INWENTARYZACJA</a></li>
+                <li>
+                    <form class="navbar-form" th:action="@{/logout}" method="post">
+                        <input type="submit" class="btn btn-danger" value="WYLOGUJ"/>
+                    </form>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -50,28 +54,24 @@
 
 <div class="block" style="height: 100%;">
     <div class="centered full-width-with-margins">
+        <h3>Szczegóły</h3>
         <div class="row margin-bottom-md">
-            <div class="col-xs-4 col-sm-4 col-md-4 stick-child-to-left">
-                <a href="inwentaryzacje.html" th:href="@{/inwentaryzacja}" class="btn btn-default">Powrót</a>
-            </div>
-
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <form class="form-inline center-panel">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-                            <input class="form-control" type="text" placeholder=""/>
-                        </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 stick-child-to-left form-horizontal">
+                <div class="form-group">
+                    <label for="dateInput" class="control-label col-md-6">Data dodania:</label>
+                    <div class="col-md-6">
+                        <span class="form-control" id="dateInput" th:text="${stocktaking.date}"></span>
                     </div>
-                    <div class="form-group"><input type="button" value="Szukaj" class="btn btn-default"/></div>
-                </form>
+                </div>
             </div>
-
-            <div class="col-xs-4 col-sm-4 col-md-4">
-
+            <div class="col-xs-4 col-sm-4 col-md-4 stick-child-to-left form-horizontal">
+                <div class="form-group">
+                    <label for="dateInput" class="control-label col-md-6">Sporządzony przez:</label>
+                    <div class="col-md-6">
+                        <span class="form-control" id="madeBy" th:text="${stocktaking.founder}"></span>
+                    </div>
+                </div>
             </div>
-
-
         </div>
         <div class="row">
             <table class="table table-striped table-hover">
@@ -84,24 +84,23 @@
                     <td>Cena jedn.</td>
                     <td>Wartość</td>
                     <td>Uwagi</td>
-                    <td>Opcje</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="i : ${itemList}">
-                    <td th:text="${i.id}"/>
-                    <td th:text="${i.name}"/>
-                    <td th:text="${i.unit}"/>
-                    <td th:text="${i.quantity}"/>
-                    <td th:text="${i.unitPrice}"/>
-                    <td th:text="${i.value}"/>
-                    <td th:text="${i.comments}"/>
-                    <td>
-                        <a href="#" th:href="@{/inwentaryzacja/delete-item(stocktaking_id=${stocktaking_id},item_id=${i.id})}">Usun</a>
-                    </td>
+                <tr>
+                    <td th:text="${stocktaking.code}" />
+                    <td th:text="${stocktaking.name}" />
+                    <td th:text="${stocktaking.unit}" />
+                    <td th:text="${stocktaking.quantity}" />
+                    <td th:text="${stocktaking.unitPrice}"/>
+                    <td th:text="${stocktaking.value}"/>
+                    <td th:text="${stocktaking.description}"/>
                 </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="row">
+            <a href="inwentaryzacje.html" class="btn btn-danger" th:href="@{/inwentaryzacja}">Powrót</a>
         </div>
 
     </div>

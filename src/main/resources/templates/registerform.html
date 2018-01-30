@@ -37,11 +37,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="employees.html">PRACOWNICY</a></li>
-                <li><a href="patients.html">PACJENCI</a></li>
-                <li class="active"><a href="registerform.html">REJESTRACJA PACJENTA</a></li>
-                <li><a href="inwenteryzacja.html">INWENTARYZACJA</a></li>
-                <li><a href="#">WYLOGUJ</a></li>
+                <li><a href="employees.html" th:href="@{/employees}">PRACOWNICY</a></li>
+                <li ><a href="patients.html" th:href="@{/patients}">PACJENCI</a></li>
+                <li class="active"><a href="registerform.html" th:href="@{/register}">REJESTRACJA PACJENTA</a></li>
+                <li><a href="inwentaryzacje.html" th:href="@{/inwentaryzacja}">INWENTARYZACJA</a></li>
+                <li>
+                    <form class="navbar-form" th:action="@{/logout}" method="post">
+                        <input type="submit" class="btn btn-danger" value="WYLOGUJ"/>
+                    </form>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -80,12 +84,13 @@
             </div>
             <div class="form-group">
                 <label for="dateVisitInput">Data wizyty</label>
-                <input type="date" class="form-control" id="dateVisitInput" placeholder="" name="dateVisit" />
+                <input type="date" class="form-control" id="dateVisitInput" placeholder="" name="dateVisit" style=" margin-bottom: 20px;"/>
             </div>
 
 
-            <input type="submit" class="btn btn-primary" value="Zarejestruj"></input>
+            <input type="submit" class="btn btn-primary" value="Zarejestruj" style="width: 100px; margin-bottom: 20px;"></input>
         </form>
+        <a th:href="@{/patients}" class="btn btn-danger" style="width: 100px;">Wróć</a>
     </div>
 </div>
 </body>
@@ -95,5 +100,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-<script src="../static/js/custom.js"></script>
+<script src="../static/js/custom.js" th:src="@{/script/custom.js}"></script>
 </html>

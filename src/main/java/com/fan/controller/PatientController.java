@@ -33,10 +33,10 @@ public class PatientController {
         return employeeService.findAll().stream().filter(p->p.getPosition().equalsIgnoreCase("lekarz")).collect(Collectors.toList());
     }
 
-    @GetMapping("/patient")
-    public String patient() {
-        return "patient";
-    }
+//    @GetMapping("/patient")
+//    public String patient() {
+//        return "patient";
+//    }
 
     @GetMapping("/delete")
     public String deletePatient(@RequestParam(name = "id") String id){
@@ -60,6 +60,16 @@ public class PatientController {
     public String registerPatient(@ModelAttribute Patient patient,Model model){
         patientService.save(patient);
         return "redirect:/patients";
+    }
+    @GetMapping("/patient")
+    public String editPatient(@RequestParam(name = "id")Long id,Model model){
+        model.addAttribute("patient",patientService.findOne(id));
+        return "patienteditform";
+    }
+    @PostMapping("/patient-edit")
+    public String editPatientForm(@ModelAttribute Patient patient){
+        patientService.save(patient);
+        return "patients";
     }
 
 }

@@ -24,4 +24,7 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long>{
 
     @Override
     <S extends Employee> S save(S s);
+    Employee findByContractTypeId(Long contractId);
+
+    Employee findByFirstNameAndLastNameAndPosition(String firstName,String lastName,String positon);
 }

@@ -101,6 +101,21 @@ $(function () {
         }
     });
 
+    $('a#gobackinv').confirm({
+        theme: 'supervan',
+        title: 'Wrócić bez zapisywania?',
+        draggable: false,
+        content: '',
+        buttons: {
+            Tak: function () {
+                location.href = this.$target.attr('href');
+            },
+            Anuluj: function () {
+
+            }
+        }
+    });
+
     $("a#removeThisEmployee").confirm({
         columnClass: 'l',
         theme: 'supervan',
@@ -150,7 +165,7 @@ $(function () {
                                 toastr.info("Zaktualizowano pensję");
                             },
                             Anuluj: function () {
-                                
+
                             }
                         }
                     });

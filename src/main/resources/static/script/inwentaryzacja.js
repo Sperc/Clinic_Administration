@@ -61,8 +61,31 @@ $(function () {
  /*
 vm = new ViewModel();
  ko.applyBindings(vm);*/
+    // $("#sendButton").click(function () {
+    //     console.log(ko.toJSON(ms));
+    // });
     $("#sendButton").click(function () {
         console.log(ko.toJSON(ms));
+         var model = {}
+         model["date"] = ms.dateIn;
+         model["name"] = ms.madeBy;
+         model["itemList"] = ms.Items;
+
+         console.log(model);
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "/stocktaking/add-inw",
+            data: JSON.stringify(model),
+            dataType: 'json',
+            success: function (data) {
+                alert("wyslano");
+                //...
+            },
+            error: function (e) {
+                alert("dupa");
+            }
+        });
     });
 
     $('a#goback').confirm({

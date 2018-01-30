@@ -11,6 +11,5 @@ public interface StocktakingService {
     Stocktaking save(Stocktaking s);
     List<Stocktaking> findAll();
     Stocktaking findById(Long id);
-    Stocktaking deleteItemFromStocktaking(Long stocktaking_id,Long item_id);
     void delete(Long id);
 }

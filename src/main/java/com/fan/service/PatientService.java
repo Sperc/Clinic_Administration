@@ -14,4 +14,5 @@ public interface PatientService {
     Patient save(Patient patient);
     List<Patient> findAll();
     void delete(Long id);
+    Patient findOne(Long id);
 }
